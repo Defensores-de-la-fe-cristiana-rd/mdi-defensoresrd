@@ -74,7 +74,7 @@ def Menu (request):
     return render(request, "registration/menu.html")
 
 
-@login_required(login_url='/accounts/login') 
+
 def Registro (request):
     data={
         'form': CustomUserCreationForm
