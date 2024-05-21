@@ -1,0 +1,48 @@
+{% load crispy_forms_tags %}
+{%load static%}
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="shortcut icon" type="image/x-icon"
+        href="{%static 'ProyectoWebDefensores/img/logo.png' %}">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<style>
+  
+  body{
+    background:  url("{% static 'ProyectoWebDefensores/img/logoOpaco.png'%}" );
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position-x: right;
+    
+  }
+
+  
+</style>
+<body>
+  <title>Iniciar Sesión</title>
+  <div class="container contenedorCredo">
+    <div class="row">
+      <div class="col-12 col-md-4 offset-md-4">
+        <br><br><br>
+        <div class="card">
+          <div class="card-body">
+            <form class="form-signin" method="post">       
+              <h2 class="form-signin-heading">Iniciar Sesión</h2>
+              <a href="{% url 'Home'%}" class="btn btn-outline-info"><i class="bi bi-house"></i></a>
+              <hr>
+              {%csrf_token%}
+              <table>
+
+                {{ form.as_table }}
+                
+              </table>
+              <br> <a href="{% url 'password_reset'%}" class="btn btn-outline-warning btn-sm float-left">¿Olvidó Contraseña?</a>
+              <input type="submit" value="Iniciar Sesión" class="btn btn-outline-primary btn-sm float-right">
+              
+            </input>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>

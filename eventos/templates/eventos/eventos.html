@@ -1,0 +1,35 @@
+{% extends "ProyectoWebDefensores/base.html"%}
+{% load static %}
+
+
+
+{%block content%}
+<title>Defensores de la Fe RD | Eventos</title>
+<div class= "contenedorPresentacion">
+  <h3>Movimiento Defensores de la Fe Cristiana RD</h3>
+  
+  <div class="divisor"></div>
+  
+  <p class="headSubtitle">Eventos</p>
+</div>
+  {% for event in Evento%}
+  
+
+  <div class="row featurette" >
+    <div class="col-md-7 col-sm-12">
+      <h2 class="featurette-heading fw-normal lh-1">{{event.titulo}}</h2>
+      <p class="lead" style="text-align: justify; color: black;">{{event.contenido|linebreaksbr}}</p>
+    </div>
+    <div class="col-md-5 col-sm-12">
+      <img class="card-img-top" src={{event.imagen.url}} alt="Evento">
+    </div>
+    
+  </div>
+  <hr class="featurette-divider">
+  {%endfor%}
+
+
+
+
+  
+ {%endblock%}

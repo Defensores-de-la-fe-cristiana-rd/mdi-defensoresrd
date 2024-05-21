@@ -1,0 +1,41 @@
+{% extends "ProyectoWebDefensores/base.html"%}
+{% load static %}
+
+
+{%block content%}
+<title>Defensores de la Fe RD | Junta de Directores</title>
+
+<div class= "contenedorPresentacion">
+  <h3>Movimiento Defensores de la Fe Cristiana RD</h3>
+  
+  <div class="divisor"></div>
+  
+  <p class="headSubtitle">Junta de Directores</p>
+</div>
+
+    {%for junta in junta_directiva%}
+
+
+      <div class="row featurette">
+        <div class="col-md-7 col-sm-12 ">
+          <h2 class="featurette-heading fw-normal lh-1">{{junta.nombre}}</h2>
+          <p class="card-text"><small class="text-muted">{{junta.ocupacion}}</small></p>
+          <p class="lead" style="text-align: justify; color: black;">{{junta.contenido|linebreaksbr}}</p>
+        </div>
+        <div class="col-md-5 col-sm-12">
+          <img class="card-img-top" style="width: 75%;" src="{{junta.imagen.url}}" alt="junta">
+        </div>
+      </div>
+      <hr class="featurette-divider">
+    
+    </section>
+
+
+
+
+{%endfor%}
+
+
+
+
+{%endblock%}

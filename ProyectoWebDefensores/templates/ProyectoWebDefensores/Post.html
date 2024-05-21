@@ -1,0 +1,33 @@
+{% extends "ProyectoWebDefensores/base.html"%}
+{% load static %}
+{%block content%}
+
+{% for posts in Post%} 
+
+<div class="news">
+
+    <div class="news-post">
+        <div class="news-post-img">
+            <img class="news-img" src="{{posts.imagen.url}}" alt="Post" style="width:100%;">
+        </div>
+        
+        <div class="news-post-info">
+            <div class="news-info-date">
+                
+                <span>Creado por: {{posts.autor.first_name}} {{posts.autor.last_name}}</span><br>
+                
+              
+            </div>
+            <h1 class="news-post-title">{{posts.titulo}}</h1>
+            <div class="divisor"></div> <br>
+            <p class="news-post-text">{{posts.contenido|linebreaksbr}}</p>
+        </div>
+    </div>
+    
+</div> 
+
+
+{%endfor%}
+
+
+    {%endblock%}

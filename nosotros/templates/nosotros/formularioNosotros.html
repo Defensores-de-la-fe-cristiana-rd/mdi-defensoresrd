@@ -1,0 +1,21 @@
+{% extends "ProyectoWebDefensores/base.html"%}
+{% load static %}
+
+
+ 
+
+{%block content%}
+<title>Defensores de la Fe RD | Nuevo Nosotros </title>
+<h2 class="fw-normal d-flex justify-content-center">Formulario Nosotros</h2>
+<div class="contenedorCredo">
+        <form action=""  method="post"  enctype="multipart/form-data">
+
+            {%csrf_token%}
+            <table style="color: white;">  {{form.as_table}}</table>
+            <br><br>
+            <input type="submit" value="Enviar" class="btn btn-primary">
+            <a href="{%url 'listar_nosotros'%}" class="btn btn-secondary">Cancelar</a> 
+
+        </form>
+    </div>
+ {%endblock%}

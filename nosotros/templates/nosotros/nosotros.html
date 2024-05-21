@@ -1,0 +1,117 @@
+{% extends "ProyectoWebDefensores/base.html"%}
+{% load static %}
+<link href="assets/img/favicon.png" rel="icon">
+<link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+<link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+<link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+<link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+<link href="assets/vendor/aos/aos.css" rel="stylesheet">
+<!-- CSS de Bootstrap -->
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- jQuery (necesario para Bootstrap) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- JavaScript de Bootstrap -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<p></p>
+{%block content%}
+
+<title>Defensores de la Fe RD | Nosotros</title>
+
+<div class= "contenedorPresentacion">
+  <h3 class="headTitlePages">Movimiento Defensores de la Fe Cristiana RD</h3>
+  
+  <div class="divisor"></div>
+  
+  <p class="headSubtitle">Nosotros</p>
+</div>
+{% for noss in NosotrosDef%}
+  
+
+<div class="row featurette" >
+  <div class="col-md-7 col-sm-12">
+    <h2 class="featurette-heading fw-normal lh-1">{{noss.titulo}}</h2>
+    <p class="lead" style="text-align: justify; color: black;">{{noss.contenido|linebreaksbr}}</p>
+  </div>
+  <div class="col-md-5 col-sm-12">
+    <img class="card-img-top" src={{noss.imagen.url}} alt="Evento">
+  </div>
+  
+</div>
+<hr class="featurette-divider">
+
+{%endfor%}
+
+<div class="container marketing">
+  <h2 class="fw-normal d-flex homeColor justify-content-center">Enlaces de Descargas</h2>
+  <hr>
+
+  <div class="row">
+    {% for archivos in archivo %}
+    <div class="col-md-3 mb-3">
+        <div class="card h-100">
+            <div class="card-body">
+                <h2 class="card-title d-flex justify-content-center smaller-title">{{ archivos.nombre }}</h2>
+                <div class="divisor"></div><br>
+                <p class="card-text d-flex justify-content-center">{{ archivos.contenido }}</p>
+            </div>
+            <div class="card-footer">
+                <a href="{{ archivos.archivo.url }}" class="btn btn-success btn-sm" download>Descargar</a>
+                <a href="{{ archivos.archivo.url }}" class="btn btn-primary btn-sm">Ver</a>
+            </div>
+        </div>
+    </div>
+
+    
+    {% endfor %}
+</div>
+
+
+
+  <div class="container marketing">
+  <h2 class="fw-normal d-flex homeColor justify-content-center">Galería de Fotos</h2>
+  <hr>
+  <div class="row">
+    {% for imagen in campamento %}
+    <div class="card" style="width: 15rem; margin: 3px;">
+      <button type="button" class="btn btn-link" data-toggle="modal" data-target="#modalImagen{{ imagen.id }}">
+        <img class="card-img-top" src="{{ imagen.imagen.url }}" alt="Card image cap">
+      </button>
+      <div class="card-body">
+        <h4 class="fw-normal d-flex justify-content-center smaller-title">{{ imagen.titulo }}</h4>
+        <div class="divisor"></div><br>
+        <p class="card-text">{{ imagen.contenido|linebreaksbr }}</p>
+      </div>
+    </div>
+
+    <!-- Ventana modal para la imagen -->
+    <div class="modal fade" id="modalImagen{{ imagen.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <img src="{{ imagen.imagen.url }}" class="img-fluid" alt="Imagen">
+          </div>
+          <div class="modal-footer">
+            <a href="{{ imagen.imagen.url }}" download="imagen.jpg" class="btn btn-success"><i class="bi bi-download"></i></a>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    {% endfor %}
+  </div>
+</div>
+</div>
+
+
+
+<br><br>
+
+
+
+ {%endblock%}

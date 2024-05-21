@@ -1,0 +1,40 @@
+{% extends "ProyectoWebDefensores/base.html" %}
+{% load static %}
+
+
+
+{% block content %}
+<title>Defensores de la Fe RD | Presbiterios</title>
+<div class="card">
+    <div class="card-body">
+<h3 class="fw-normal d-flex justify-content-center">Noticias</h3>
+<hr>
+<a href="{% url 'Agregar_Noticia' %}" class="btn btn-info btn-sm">Agregar Noticia</a>
+<a href="{% url 'Menu' %}" class="btn btn-primary btn-sm float-right">Volver al menú</a><br>
+<table class="table table-striped table-hover table-responsive-sm">
+   <tr>
+       <th>Titulo</th>
+       <th>Titulo Peq</th>
+       <th>Contenido</th>
+       <th>Contenido Pq</th>
+       <th>Imagen</th>
+       <th style="width: 150px;">Opción</th>
+    </tr>
+   {% for p in Noticias %}
+   <tr>
+       <td>{{ p.tituloPequeno }}</td>
+       <td>{{ p.tituloGrande }}</td>
+       <td>{{ p.contenidoPequeno }}</td>
+       <td>{{ p.contenido }}</td>
+       <td><img src="{{ p.imagen.url }}"  alt="Noticias" class="imgLista"></td> 
+       <td>
+           <a href="{% url 'modificar_Noticia' p.id %}" class="btn btn-info btn-sm"><i class="bi bi-pencil-square"></i></a>
+           <a href="{% url 'eliminar_Noticia' p.id %}" class="btn btn-danger btn-sm"><i class="bi bi-trash-fill"></i></a>
+       </td>
+   </tr>
+   {% endfor %}
+</table>
+
+</div>
+</div>
+{% endblock %}

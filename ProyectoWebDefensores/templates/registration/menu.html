@@ -1,0 +1,94 @@
+{% extends "ProyectoWebDefensores/base.html"%}
+{% load static %}
+
+{%block content%}
+<title>Menu</title>
+<div class="contenedorCredo">
+
+<div class="container marketing">
+    <h2 class="fw-normal d-flex justify-content-center">Menu Defensores</h2>
+    {% if user.is_authenticated %}
+    
+        <a href="{% url 'logout'%}" class="link float-right opcionesMenu"> <span class="link"><i class="bi bi-box-arrow-left"></i> Cerrar Sesión</span></a>
+        <a href="#" class="link">Bienvenido {{user.first_name}} {{user.last_name}}</a>
+    {% else %}
+        <a href="{% url 'login'%}" class="link">Iniciar Sesión</a>
+    {%endif%}
+
+    <br><br><br>
+    <div class="row">
+      <div class="col-lg-4 opcionesMenu"><a href="{% url 'muestra_junta'%}" class="link">
+            <img src="{% static 'ProyectoWebDefensores/img/equipo.png'%}" class="imagenRepresentacion bd-placeholder-img "/>
+            <h2 class="link">Directiva</a></h2>
+        </div>
+
+        <div class="col-lg-4 opcionesMenu"><a href="{% url 'listar_presbiterios'%}" class="link">
+            <img src="{% static 'ProyectoWebDefensores/img/mapa.png'%}" class="imagenRepresentacion bd-placeholder-img "/>
+            <h2 class="link">Presbiterios</a></h2>
+        </div>
+
+        
+
+        <div class="col-lg-4 opcionesMenu"><a href="{% url 'listar_eventos'%}" class="link">
+            <img src="{% static 'ProyectoWebDefensores/img/calendario.png'%}" class="imagenRepresentacion bd-placeholder-img "/>
+            <h2 class="link">Eventos</a></h2>
+        </div>
+
+
+        
+        <div class="col-lg-4 opcionesMenu"><a href="{% url 'listar_departamentos'%}" class="link">
+            <img src="{% static 'ProyectoWebDefensores/img/departamento.png'%}" class="imagenRepresentacion bd-placeholder-img "/>
+            <h2 class="link">Departamentos</a></h2>
+        </div>
+
+        <div class="col-lg-4 opcionesMenu"><a href="{% url 'listar_nosotros'%}" class="link">
+            <img src="{% static 'ProyectoWebDefensores/img/informacion.png'%}" class="imagenRepresentacion bd-placeholder-img "/>
+            <h2 class="link">Nosotros</a></h2>
+        </div>
+
+        <div class="col-lg-4 opcionesMenu"><a href="{% url 'listaCarrousel'%}" class="link">
+            <img src="{% static 'ProyectoWebDefensores/img/carrusel.png'%}" class="imagenRepresentacion bd-placeholder-img "/>
+            <h2 class="link">Carrousel</a></h2>
+        </div>
+
+        <div class="col-lg-4 opcionesMenu"><a href="{% url 'listarArchivos'%}" class="link">
+            <img src="{% static 'ProyectoWebDefensores/img/carpeta.png'%}" class="imagenRepresentacion bd-placeholder-img "/>
+            <h2 class="link">Gestor de Archivos</a></h2>
+        </div>
+
+        <div class="col-lg-4 opcionesMenu"><a href="{% url 'listar_galeria'%}" class="link">
+            <img src="{% static 'ProyectoWebDefensores/img/galeria.png'%}" class="imagenRepresentacion bd-placeholder-img "/>
+            <h2 class="link">Galería de Imagenes</a></h2>
+        </div>
+
+        <div class="col-lg-4 opcionesMenu"><a href="{% url 'listaNoticias'%}" class="link">
+            <img src="{% static 'ProyectoWebDefensores/img/periodico.png'%}" class="imagenRepresentacion bd-placeholder-img "/>
+            <h2 class="link">Noticias</a></h2>
+        </div>
+
+        <div class="col-lg-4 opcionesMenu"><a href="{% url 'Posts'%}" class="link">
+            <img src="{% static 'ProyectoWebDefensores/img/blog.png'%}" class="imagenRepresentacion bd-placeholder-img "/>
+            <h2 class="link">Blog</a></h2>
+        </div>
+
+        <div class="col-lg-4 opcionesMenu"><a href="{% url 'listaContactanos'%}" class="link">
+            <img src="{% static 'ProyectoWebDefensores/img/contactanos.png'%}" class="imagenRepresentacion bd-placeholder-img "/>
+            <h2 class="link">Contáctanos</a></h2>
+        </div>
+
+
+        
+        <div class="col-lg-4 opcionesMenu"><a href="{% url 'listaUsuarios'%}" class="link">
+            <img src="{% static 'ProyectoWebDefensores/img/user-interface.png'%}" class="imagenRepresentacion bd-placeholder-img "/>
+            <h2 class="link">Usuarios</a></h2>
+        </div>
+
+
+        
+
+    </div>
+</div>
+
+
+</div>
+{%endblock%}

@@ -1,0 +1,26 @@
+{% extends "ProyectoWebDefensores/base.html"%}
+{% load static %}
+
+
+
+
+{%block content%}
+<title>Defensores de la Fe RD | Modifica Noticia </title>
+
+<h2 class="fw-normal d-flex justify-content-center">Modificar Noticia</h2>
+<div class="contenedorCredo">
+<form action=""  class="DirectivaForm" method="POST" enctype="multipart/form-data" >
+
+    {%csrf_token%}
+    <table style="color: white;">  {{form.as_table}}</table>
+    <br><br>
+    <input type="submit" value="Modificar" class="btn btn-primary">
+    <a href="{%url 'listaNoticias'%}" class="btn btn-secondary">Cancelar</i></a> 
+
+</form>
+</div>
+
+
+
+
+ {%endblock%}

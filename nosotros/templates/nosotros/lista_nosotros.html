@@ -1,0 +1,38 @@
+{% extends "ProyectoWebDefensores/base.html" %}
+{% load static %}
+
+
+
+{% block content %}
+<title>Defensores de la Fe RD | Nosotros</title>
+
+<h3 class="fw-normal d-flex justify-content-center">Nosotros</h3>
+<hr>
+<div class="card">
+    <div class="card-body">
+        <a href="{% url 'formularioNosotros' %}" class="btn btn-info btn-sm">Agregar Nosotros</a>
+        <a href="{% url 'Menu' %}" class="btn btn-primary btn-sm float-right">Volver al menú</a><br>
+        <table class="table table-striped table-hover table-responsive-sm">
+   <tr>
+       <th>Nombre</th>
+       <th>Contenido</th>
+       <th>Imagen</th>
+       <th style="width: 150px;">Opción</th>
+   </tr>
+   {% for p in NosotrosDef %}
+   <tr>
+       <td>{{ p.titulo }}</td>
+       <td>{{ p.contenido }}</td>
+       
+       <td><img src="{{ p.imagen.url }}"  alt="Nosotros" class="imgLista"></td> 
+       <td>
+           <a href="{% url 'modificar_nosotros' p.id %}" class="btn btn-info btn-sm"><i class="bi bi-pencil-square"></i></a>
+           <a href="{% url 'eliminar_nosotros' p.id %}" class="btn btn-danger btn-sm"><i class="bi bi-trash-fill"></i></a>
+       </td>
+   </tr>
+   {% endfor %}
+</table>
+
+</div>
+</div>
+{% endblock %}
