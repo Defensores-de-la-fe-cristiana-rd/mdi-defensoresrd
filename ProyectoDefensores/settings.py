@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'departamentos',
     'nosotros',
     "bootstrap5",
+    'storages',
     
     
 ]
@@ -145,7 +146,7 @@ STATIC_URL = '/static/'
 
 if not DEBUG:    
     # Tell Django to copy static assets into a path called `staticfiles` (this is specific to Render)
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+    
     # Enable the WhiteNoise storage backend, which compresses static files to reduce disk use
     # and renames the files with unique names for each version to support long-term caching
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
@@ -154,7 +155,26 @@ if not DEBUG:
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 import os
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_URL='/media/'
 STATICFILES_DIR = [os.path.join(BASE_DIR,'static')]
 MEDIA_ROOT = os.path.join(BASE_DIR, "media") 
+
+#AWS CONFIGURATION
+AWS_ACCESS_KEY_ID = 'AKIA2UC3EV4RQV7MPIN4'
+AWS_SECRET_ACCESS_KEY='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'
+
+
+AWS_STORAGE_BUCKET_NAME='defensores-bkt-24'
+AWS_S3_CUSTOM_DOMAIN='%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+AWS_S3_FILE_OVERWRITE='False'
+
+
+STORAGE ={
+    "default":{
+        "BACKEND":"storages.backends.s3boto3.S3StaticStorage",
+    },
+    "staticfiles":{
+        "BACKEND":"storages.backends.s3boto3.S3StaticStorage",
+    },
+}
