@@ -12,7 +12,7 @@ urlpatterns = [
     path ('listar_directiva', views.MuestraJunta, name="muestra_junta"),
     path ('modificar_directiva/<id>', views.ModificaDirectiva, name="modificacion_directiva")
 ]
-
+ 
 
 
 

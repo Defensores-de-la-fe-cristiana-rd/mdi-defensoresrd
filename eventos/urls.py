@@ -14,7 +14,7 @@ urlpatterns = [
     path ('eliminar_evento/<id>', views.EliminarEvento, name="elimininarEvento")
 ]
 
-
+ 
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
