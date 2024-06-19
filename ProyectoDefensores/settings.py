@@ -13,9 +13,9 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 from pathlib import Path
 import os
 import dj_database_url
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
@@ -28,19 +28,17 @@ DEBUG = 'RENDER' not in os.environ
 
 ALLOWED_HOSTS = []
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
-if RENDER_EXTERNAL_HOSTNAME:    
+if RENDER_EXTERNAL_HOSTNAME:
     ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
-
 MESSAGE_STORAGE = "django.contrib.messages.storage.cookie.CookieStorage"
+
 # Application definition
-LOGIN_REDIRECT_URL='/Menu'
-LOGOUT_REDIRECT_URL='/'
+LOGIN_REDIRECT_URL = '/Menu'
+LOGOUT_REDIRECT_URL = '/'
 LOGIN_URL = '/accounts/login/'
 
 INSTALLED_APPS = [
-    
-    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -56,14 +54,10 @@ INSTALLED_APPS = [
     'nosotros',
     "bootstrap5",
     'storages',
-    
-    
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
 SESSION_COOKIE_AGE = 450
-
-
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -96,16 +90,15 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'ProyectoDefensores.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
     'default': dj_database_url.config(
-               
-        default='postgresql://postgres:postgres@localhost/postgres',        
-        conn_max_age=600    
-        )}
+        default='postgresql://postgres:postgres@localhost/postgres',
+        conn_max_age=600
+    )
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -125,7 +118,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
@@ -137,44 +129,40 @@ USE_I18N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = '/static/'
 
-
-if not DEBUG:    
+if not DEBUG:
     # Tell Django to copy static assets into a path called `staticfiles` (this is specific to Render)
     
     # Enable the WhiteNoise storage backend, which compresses static files to reduce disk use
     # and renames the files with unique names for each version to support long-term caching
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-import os
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-MEDIA_URL='/media/'
-STATICFILES_DIR = [os.path.join(BASE_DIR,'static')]
-MEDIA_ROOT = os.path.join(BASE_DIR, "media") 
+MEDIA_URL = '/media/'
+STATICFILES_DIR = [os.path.join(BASE_DIR, 'static')]
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
-#AWS CONFIGURATION
-AWS_ACCESS_KEY_ID = 'AKIA2UC3EV4RQV7MPIN4'
-AWS_SECRET_ACCESS_KEY='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'
+# AWS CONFIGURATION
+AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
 
+AWS_STORAGE_BUCKET_NAME = 'defensores-bkt-24'
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+AWS_S3_FILE_OVERWRITE = 'False'
 
-AWS_STORAGE_BUCKET_NAME='defensores-bkt-24'
-AWS_S3_CUSTOM_DOMAIN='%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
-AWS_S3_FILE_OVERWRITE='False'
-
-
-STORAGE ={
-    "default":{
-        "BACKEND":"storages.backends.s3boto3.S3StaticStorage",
+STORAGES = {
+    "default": {
+        "BACKEND": "storages.backends.s3boto3.S3StaticStorage",
     },
-    "staticfiles":{
-        "BACKEND":"storages.backends.s3boto3.S3StaticStorage",
+    "staticfiles": {
+        "BACKEND": "storages.backends.s3boto3.S3StaticStorage",
     },
 }
