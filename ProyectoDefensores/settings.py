@@ -139,12 +139,12 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-if not DEBUG:
+# if not DEBUG:
     # Tell Django to copy static assets into a path called `staticfiles` (this is specific to Render)
     
     # Enable the WhiteNoise storage backend, which compresses static files to reduce disk use
     # and renames the files with unique names for each version to support long-term caching
-    STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
+    # STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
