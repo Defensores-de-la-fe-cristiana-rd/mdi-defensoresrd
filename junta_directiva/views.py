@@ -21,6 +21,8 @@ def Formulario_Junta (request):
         formulario=DirectivaForm(data=request.POST, files=request.FILES)
         if formulario.is_valid():
             formulario.save()
+            messages.success(request, "Agregado Satisfactoriamente")
+            return redirect(to="/junta_directiva/listar_directiva")
         else:
             data["form"]=formulario
     return render (request, "junta_directiva/formularioDirectiva.html", data)
