@@ -146,7 +146,7 @@ def ModificarArchivo(request, id):
         'form': ArchivoForm(instance=archivo) 
     }
     if request.method=="POST":
-        formulario=ArchivoForm(data=request.POST, instance=Archivo, files=request.FILES)
+        formulario=ArchivoForm(data=request.POST, instance=archivo, files=request.FILES)
         if formulario.is_valid():
             formulario.save()
             messages.success(request, "Modificado Satisfactoriamente")

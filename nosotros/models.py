@@ -35,6 +35,10 @@ class Archivo(models.Model):
     nombre = models.CharField(max_length=100)
     contenido=models.TextField(max_length=200)
     archivo = models.FileField(upload_to='archivos/')
+    
+    class Meta:
+        verbose_name='Archivo'
+        verbose_name_plural='Archivos'
 
     def __str__(self):
         return self.nombre
