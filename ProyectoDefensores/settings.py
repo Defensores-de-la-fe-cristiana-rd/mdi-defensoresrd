@@ -14,6 +14,7 @@ from pathlib import Path
 import os
 import dj_database_url
 from dotenv import load_dotenv
+from storages.backends.s3boto3 import S3Boto3Storage
 
 
 # * Cargar variables de entorno
